@@ -1,2 +1,3 @@
-# swagger-ui-launcher
- Command-line tool to launch Swagger UI
+# Swagger UI Launcher
+ 
+A command-line tool to launch Swagger UI
