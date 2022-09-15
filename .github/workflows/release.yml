@@ -40,7 +40,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: swagger-ui-launcher-${{ matrix.os }}
-          path: build/native/nativeCompile/swagger-ui-launcher*
+          path: |
+            build/native/nativeCompile/swagger-ui-launcher*
+            !build/native/nativeCompile/*.txt
           retention-days: 1
   release:
     name: "Release"
@@ -49,8 +51,10 @@ jobs:
     steps:
       - uses: actions/download-artifact@v2
 
-      - name: Display fetched artifacts
-        run: ls -R
+      - name: Rename files
+        run: |
+          mv swagger-ui-launcher-macos-latest/swagger-ui-launcher swagger-ui-launcher-macos-latest/swagger-ui-launcher-macos
+          mv swagger-ui-launcher-ubuntu-latest/swagger-ui-launcher swagger-ui-launcher-ubuntu-latest/swagger-ui-launcher-ubuntu
 
       - name: Create a Github Release
         uses: "marvinpinto/action-automatic-releases@latest"
@@ -58,6 +62,6 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: true
           files: |
-            swagger-ui-launcher-windows-latest/*.*
-            swagger-ui-launcher-macos-latest/*.*
-            swagger-ui-launcher-ubuntu-latest/*.*
+            swagger-ui-launcher-windows-latest/swagger-ui-launcher.exe
+            swagger-ui-launcher-macos-latest/swagger-ui-launcher-macos
+            swagger-ui-launcher-ubuntu-latest/swagger-ui-launcher-ubuntu
