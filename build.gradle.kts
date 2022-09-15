@@ -51,10 +51,6 @@ kapt {
 graalvmNative {
     binaries {
         named("main") {
-            javaLauncher.set(javaToolchains.launcherFor {
-                languageVersion.set(JavaLanguageVersion.of(17))
-                vendor.set(JvmVendorSpec.matching("GraalVM Community"))
-            })
 
             fallback.set(false)
             verbose.set(true)
@@ -68,8 +64,6 @@ graalvmNative {
             jvmArgs.add("--add-exports=org.graalvm.nativeimage.builder/com.oracle.svm.core.configure=ALL-UNNAMED")
             jvmArgs.add("--add-exports=org.graalvm.sdk/org.graalvm.nativeimage.impl=ALL-UNNAMED")
 //            jvmArgs.add("-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005")
-
-//            buildArgs.add("-H:Log=registerResource:3")
 
             imageName.set("swagger-ui-launcher")
         }
