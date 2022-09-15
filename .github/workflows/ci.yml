@@ -1,0 +1,34 @@
+# Build binaries using GraalVM
+
+name: GraalVM build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    name: Build binary
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          version: '22.2.0'
+          java-version: '17'
+          components: 'native-image'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2    
+
+      - name: Build
+        run: |
+          ./gradlew nativeCompile

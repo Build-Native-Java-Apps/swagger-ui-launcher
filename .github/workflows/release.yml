@@ -1,14 +1,14 @@
-# Build binaries using GraalVM
+# Create release
 
-name: GraalVM build
+name: Release
+
+permissions:
+  contents: write
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-  workflow_dispatch:
+    tags:
+      - v[0-9]+.*
 
 jobs:
 
@@ -40,4 +40,24 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: swagger-ui-launcher-${{ matrix.os }}
-          path: build/native/nativeCompile/swagger-ui-launcher
+          path: build/native/nativeCompile/swagger-ui-launcher*
+          retention-days: 1
+  release:
+    name: "Release"
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+
+      - name: Display fetched artifacts
+        run: ls -R
+
+      - name: Create a Github Release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: true
+          files: |
+            swagger-ui-launcher-windows-latest/*.*
+            swagger-ui-launcher-macos-latest/*.*
+            swagger-ui-launcher-ubuntu-latest/*.*
