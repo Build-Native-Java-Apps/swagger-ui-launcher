@@ -60,7 +60,8 @@ jobs:
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: true
+          prerelease: false
+          title: ${{ github.ref_name }}
           files: |
             swagger-ui-launcher-windows-latest/swagger-ui-launcher.exe
             swagger-ui-launcher-macos-latest/swagger-ui-launcher-macos
