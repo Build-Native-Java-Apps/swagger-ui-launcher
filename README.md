@@ -29,3 +29,9 @@ $ swagger-ui-launcher -u https://petstore.swagger.io/v2/swagger.json
 ```
 
 After starting, the service is started at a random port. You can see the port number from output. Open your browser to the output location and view Swagger UI.
+
+```
+00:56:15.941 [DefaultDispatcher-worker-1] INFO ktor.application - Autoreload is disabled because the development mode is off.
+00:56:15.942 [DefaultDispatcher-worker-1] INFO ktor.application - Application started in 0.002 seconds.
+00:56:15.956 [DefaultDispatcher-worker-5] INFO ktor.application - Responding at http://localhost:51145
+```
