@@ -53,8 +53,10 @@ jobs:
 
       - name: Rename files
         run: |
-          mv swagger-ui-launcher-macos-latest/swagger-ui-launcher swagger-ui-launcher-macos-latest/swagger-ui-launcher-macos
-          mv swagger-ui-launcher-ubuntu-latest/swagger-ui-launcher swagger-ui-launcher-ubuntu-latest/swagger-ui-launcher-ubuntu
+          mkdir release-files
+          mv swagger-ui-launcher-windows-latest/swagger-ui-launcher.exe release-files/swagger-ui-launcher.exe
+          mv swagger-ui-launcher-macos-latest/swagger-ui-launcher release-files/swagger-ui-launcher-macos
+          mv swagger-ui-launcher-ubuntu-latest/swagger-ui-launcher release-files/swagger-ui-launcher-ubuntu
 
       - name: Create a Github Release
         uses: ncipollo/release-action@v1
@@ -62,7 +64,5 @@ jobs:
           token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           body: ${{ github.ref_name }}
-          artifacts: |
-            swagger-ui-launcher-windows-latest/swagger-ui-launcher.exe,
-            swagger-ui-launcher-macos-latest/swagger-ui-launcher-macos,
-            swagger-ui-launcher-ubuntu-latest/swagger-ui-launcher-ubuntu
+          artifacts: "release-files/*"
+          generateReleaseNotes: true
