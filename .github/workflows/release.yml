@@ -57,12 +57,12 @@ jobs:
           mv swagger-ui-launcher-ubuntu-latest/swagger-ui-launcher swagger-ui-launcher-ubuntu-latest/swagger-ui-launcher-ubuntu
 
       - name: Create a Github Release
-        uses: "marvinpinto/action-automatic-releases@latest"
+        uses: ncipollo/release-action@v1
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
-          title: ${{ github.ref_name }}
-          files: |
-            swagger-ui-launcher-windows-latest/swagger-ui-launcher.exe
-            swagger-ui-launcher-macos-latest/swagger-ui-launcher-macos
+          body: ${{ github.ref_name }}
+          artifacts: |
+            swagger-ui-launcher-windows-latest/swagger-ui-launcher.exe,
+            swagger-ui-launcher-macos-latest/swagger-ui-launcher-macos,
             swagger-ui-launcher-ubuntu-latest/swagger-ui-launcher-ubuntu
