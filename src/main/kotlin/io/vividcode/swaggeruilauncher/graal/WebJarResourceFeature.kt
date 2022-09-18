@@ -11,7 +11,6 @@ import java.net.JarURLConnection
 import java.net.URL
 import java.util.*
 
-
 @AutomaticFeature
 class WebJarResourceFeature : Feature {
 
@@ -21,6 +20,5 @@ class WebJarResourceFeature : Feature {
         WebJarInfoHolder.locator.webJars().values.flatMap { it.contents }.forEach {
             registry.addResources(ConfigurationCondition.alwaysTrue(), it)
         }
-
     }
 }

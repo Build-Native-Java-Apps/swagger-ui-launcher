@@ -3,7 +3,6 @@ package io.vividcode.swaggeruilauncher
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
 import io.vividcode.swaggeruilauncher.plugins.configureRouting
-import org.slf4j.LoggerFactory
 import picocli.CommandLine
 import java.io.File
 import java.nio.file.Paths
@@ -36,7 +35,6 @@ class Application : Callable<Void> {
     }
 
     override fun call(): Void? {
-        LoggerFactory.getLogger("SwaggerUILauncher")
         embeddedServer(CIO, port = 0, host = "localhost") {
             configureRouting(
                 LauncherOptions(

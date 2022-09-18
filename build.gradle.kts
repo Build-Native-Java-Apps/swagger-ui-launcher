@@ -6,7 +6,6 @@ val graalvm_version: String by project
 plugins {
     application
     kotlin("jvm") version "1.7.10"
-    kotlin("plugin.serialization") version "1.7.10"
     kotlin("kapt") version "1.7.10"
     id("io.ktor.plugin") version "2.1.0"
     id("org.graalvm.buildtools.native") version "0.9.13"
@@ -28,7 +27,6 @@ repositories {
 dependencies {
     implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-webjars-jvm:$ktor_version")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
     implementation("org.webjars:swagger-ui:4.14.0")
     implementation("info.picocli:picocli:4.6.3")
     implementation("io.ktor:ktor-server-cio-jvm:$ktor_version")
