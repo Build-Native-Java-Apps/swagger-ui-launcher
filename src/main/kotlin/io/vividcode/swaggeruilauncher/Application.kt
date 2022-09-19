@@ -3,8 +3,10 @@ package io.vividcode.swaggeruilauncher
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
 import io.vividcode.swaggeruilauncher.plugins.configureRouting
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.runBlocking
+import org.slf4j.LoggerFactory
 import picocli.CommandLine
-import java.io.File
 import java.nio.file.Paths
 import java.util.concurrent.Callable
 
@@ -16,6 +18,9 @@ class Application : Callable<Void> {
 
     @CommandLine.ArgGroup(exclusive = false, multiplicity = "1", heading = "Source of OpenAPI spec")
     lateinit var apiSpecSources: ApiSpecSources
+
+    @CommandLine.Option(names = ["--no-open-browser"], description = ["Open browser"], negatable = true)
+    var openBrowser = true
 
     class ApiSpecSources {
         @CommandLine.Option(names = ["-f", "--file"], description = ["Local file"])
@@ -35,13 +40,29 @@ class Application : Callable<Void> {
     }
 
     override fun call(): Void? {
-        embeddedServer(CIO, port = 0, host = "localhost") {
+        val logger = LoggerFactory.getLogger(Application::class.java)
+        val server = embeddedServer(CIO, port = 0, host = "localhost") {
             configureRouting(
                 LauncherOptions(
                     sources = sources()
                 )
             )
-        }.start(wait = true)
+        }.start()
+        val exitChannel = Channel<Boolean>(1)
+        Runtime.getRuntime().addShutdownHook(Thread {
+            runBlocking {
+                logger.info("Shutting down the server")
+                exitChannel.send(true)
+            }
+        })
+        runBlocking {
+            val port = server.resolvedConnectors()[0].port
+            logger.info("Server started at port $port")
+            if (openBrowser) {
+                BrowserOpener.openUrl("http://localhost:$port")
+            }
+            exitChannel.receive()
+        }
         return null
     }
 }
