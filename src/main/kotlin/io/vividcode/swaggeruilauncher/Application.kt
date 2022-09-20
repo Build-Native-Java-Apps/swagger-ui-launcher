@@ -11,7 +11,7 @@ import java.nio.file.Paths
 import java.util.concurrent.Callable
 
 @CommandLine.Command(
-    name = "swagger-ui-launcher", mixinStandardHelpOptions = true, version = ["1.0.0"],
+    name = "swagger-ui-launcher", mixinStandardHelpOptions = true, version = ["1.1.0"],
     description = ["Launch Swagger UI"]
 )
 class Application : Callable<Void> {
