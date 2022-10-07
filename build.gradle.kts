@@ -5,10 +5,10 @@ val graalvm_version: String by project
 
 plugins {
     application
-    kotlin("jvm") version "1.7.10"
-    kotlin("kapt") version "1.7.10"
+    kotlin("jvm") version "1.7.20"
+    kotlin("kapt") version "1.7.20"
     id("io.ktor.plugin") version "2.1.0"
-    id("org.graalvm.buildtools.native") version "0.9.13"
+    id("org.graalvm.buildtools.native") version "0.9.14"
 }
 
 group = "io.vividcode.swaggeruilauncher"
@@ -27,7 +27,7 @@ repositories {
 dependencies {
     implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-webjars-jvm:$ktor_version")
-    implementation("org.webjars:swagger-ui:4.14.0")
+    implementation("org.webjars:swagger-ui:4.14.2")
     implementation("info.picocli:picocli:4.6.3")
     implementation("io.ktor:ktor-server-cio-jvm:$ktor_version")
     implementation("ch.qos.logback:logback-classic:$logback_version")
