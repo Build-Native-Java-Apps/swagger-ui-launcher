@@ -5,14 +5,14 @@ val graalvm_version: String by project
 
 plugins {
     application
-    kotlin("jvm") version "1.7.20"
-    kotlin("kapt") version "1.7.20"
-    id("io.ktor.plugin") version "2.1.0"
-    id("org.graalvm.buildtools.native") version "0.9.14"
+    kotlin("jvm") version "1.7.22"
+    kotlin("kapt") version "1.7.22"
+    id("io.ktor.plugin") version "2.2.3"
+    id("org.graalvm.buildtools.native") version "0.9.19"
 }
 
 group = "io.vividcode.swaggeruilauncher"
-version = "1.1.0"
+version = "1.2.0"
 application {
     mainClass.set("io.vividcode.swaggeruilauncher.ApplicationKt")
 
