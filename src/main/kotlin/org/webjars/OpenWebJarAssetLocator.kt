@@ -7,8 +7,9 @@ class OpenWebJarAssetLocator(private val delegate: WebJarAssetLocator) : WebJarA
         io.vividcode.swaggeruilauncher.graal.WebJarInfo(
             webJarInfo.version,
             webJarInfo.groupId,
+            webJarInfo.artifactId,
             webJarInfo.uri,
-            webJarInfo.contents
+            webJarInfo.contents.toList()
         )
     }
 }

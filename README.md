@@ -2,7 +2,7 @@
 
 [![GraalVM build](https://github.com/alexcheng1982/swagger-ui-launcher/actions/workflows/ci.yml/badge.svg)](https://github.com/alexcheng1982/swagger-ui-launcher/actions/workflows/ci.yml)
  
-A command-line tool to launch Swagger UI
+A native command-line tool to launch Swagger UI, written with Kotlin / GraalVM.
 
 # Usage
 
