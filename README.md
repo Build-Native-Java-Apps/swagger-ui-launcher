@@ -4,9 +4,11 @@
  
 A native command-line tool to launch Swagger UI, written with Kotlin / GraalVM.
 
+> The goal of this project is to demonstrate how to use GraalVM to build native apps. For more information about building native Java apps with GraalVM, check out [this website](https://build-native-java-apps.cc/).
+
 # Usage
 
-Download a binary file from the releases page based on the platform (Windows, macOS or Ubuntu).
+Download a binary file from the [releases page](https://github.com/alexcheng1982/swagger-ui-launcher/releases) based on the platform (Windows, macOS or Ubuntu).
 
 See the usage of this tool.
 
@@ -21,7 +23,7 @@ Source of OpenAPI spec  -f, --file=<fileSources>   Local file
   -u, --url=<urlSources>     URL
 ```
 
-OpenAPI specs can be provided as local files or remote URLs.
+OpenAPI specs can be provided as local files or remote URLs. Multiple specs can be provided.
 
 * Local files are specified using `-f`.
 * Remote URLs are specified using `-u`.
