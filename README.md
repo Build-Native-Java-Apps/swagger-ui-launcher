@@ -1,6 +1,8 @@
 # Swagger UI Launcher
 
 [![GraalVM build](https://github.com/alexcheng1982/swagger-ui-launcher/actions/workflows/ci.yml/badge.svg)](https://github.com/alexcheng1982/swagger-ui-launcher/actions/workflows/ci.yml)
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/alexcheng1982)
  
 A native command-line tool to launch Swagger UI, written with Kotlin / GraalVM.
 
