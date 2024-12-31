@@ -9,7 +9,7 @@ plugins {
     kotlin("jvm") version "1.9.20"
     kotlin("kapt") version "1.9.20"
     id("io.ktor.plugin") version "2.2.4"
-    id("org.graalvm.buildtools.native") version "0.9.16"
+    id("org.graalvm.buildtools.native") version "0.10.4"
 }
 
 group = "io.vividcode.swaggeruilauncher"
