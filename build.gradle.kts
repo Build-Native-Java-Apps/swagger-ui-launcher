@@ -13,7 +13,7 @@ plugins {
 }
 
 group = "io.vividcode.swaggeruilauncher"
-version = "1.3.0"
+version = "1.3.1"
 application {
     mainClass.set("io.vividcode.swaggeruilauncher.ApplicationKt")
 
