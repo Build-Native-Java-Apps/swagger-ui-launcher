@@ -37,7 +37,7 @@ jobs:
           ./gradlew nativeCompile
           
       - name: Upload binary
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: swagger-ui-launcher-${{ matrix.os }}
           path: |
@@ -49,7 +49,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
 
       - name: Rename files
         run: |
